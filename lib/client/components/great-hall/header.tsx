@@ -156,7 +156,7 @@ export function Header({
               <Button
                 variant='ghost'
                 className='text-blue-600 font-semibold text-xs md:text-base px-2 md:px-4 !bg-transparent hover:!bg-transparent hover:text-[#FFCB05] relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#FFCB05] hover:after:w-full after:transition-all after:duration-300'
-                onClick={() => router.push('/potions')}
+                onClick={() => router.push('/randombattle/battle?mode=random')}
               >
                 Batalhar
               </Button>
@@ -266,7 +266,7 @@ export function Header({
                       variant='ghost'
                       size='sm'
                       className='w-full justify-start text-sm'
-                      onClick={() => router.push('/potions')}
+                      onClick={() => router.push('/randombattle/battle?mode=random')}
                     >
                       <Swords className='w-4 h-4 mr-2' /> Batalhar
                     </Button>

@@ -203,7 +203,7 @@ export default function LoginPage() {
                   className='tabs-transition flex items-center gap-2'
                   value='register'
                 >
-                  <Sparkles className='h-4 w-4' /> Escolha seu Pokémon
+                  <Sparkles className='h-4 w-4' /> Registre-se
                 </TabsTrigger>
               </TabsList>
 
