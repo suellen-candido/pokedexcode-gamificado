@@ -30,6 +30,12 @@ export default function SelectClassPage() {
     }
   }, [selectedClassId, router, authLoading, user]);
 
+  useEffect(() => {
+    if (!authLoading && !user) {
+      router.replace('/login');
+    }
+  }, [authLoading, user, router]);
+
   const handleEnrollmentSuccess = async (classId: string): Promise<boolean> => {
     if (!user) {
       toast.error('Usuário não autenticado.');
@@ -49,7 +55,6 @@ export default function SelectClassPage() {
   }
 
   if (!user) {
-    router.replace('/login');
     return (
       <LoadingScreen message='Usuário não encontrado. Redirecionando...' />
     );

@@ -133,44 +133,44 @@ export function Header({
         />
       </div>
       
-      <div className='relative container mx-auto px-4 py-2.5'>
-        <div className='flex items-center justify-between'>
+      <div className='relative container mx-auto px-2 md:px-4 py-2.5'>
+        <div className='flex items-center justify-between gap-2'>
           {/* Logo */}
-          <div className='flex items-center gap-8'>
+          <div className='flex items-center gap-2 md:gap-8 flex-shrink-0'>
             <Image 
               src='/image/PokédexLOGO.png' 
               alt='PokédexCode' 
               width={180} 
               height={62}
-              className='h-16 w-auto'
+              className='h-10 md:h-16 w-auto'
             />
             
             {/* Navigation Links */}
-            <nav className='hidden md:flex items-center gap-6'>
+            <nav className='flex items-center gap-2 md:gap-6'>
               <Button
                 variant='ghost'
-                className='text-blue-600 hover:text-blue-700 font-semibold hover:bg-blue-50 text-base'
+                className='text-blue-600 font-semibold text-xs md:text-base px-2 md:px-4 !bg-transparent hover:!bg-transparent hover:text-[#FFCB05] relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#FFCB05] hover:after:w-full after:transition-all after:duration-300'
                 onClick={() => router.push('/great-hall')}
               >
                 Início
               </Button>
               <Button
                 variant='ghost'
-                className='text-blue-600 hover:text-blue-700 font-semibold hover:bg-blue-50 text-base'
+                className='text-blue-600 font-semibold text-xs md:text-base px-2 md:px-4 !bg-transparent hover:!bg-transparent hover:text-[#FFCB05] relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#FFCB05] hover:after:w-full after:transition-all after:duration-300'
                 onClick={() => router.push('/potions')}
               >
                 Batalhar
               </Button>
               <Button
                 variant='ghost'
-                className='text-blue-600 hover:text-blue-700 font-semibold hover:bg-blue-50 text-base'
+                className='text-blue-600 font-semibold text-xs md:text-base px-2 md:px-4 !bg-transparent hover:!bg-transparent hover:text-[#FFCB05] relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#FFCB05] hover:after:w-full after:transition-all after:duration-300'
                 onClick={() => router.push('/professor')}
               >
                 Aprender
               </Button>
               <Button
                 variant='ghost'
-                className='text-blue-600 hover:text-blue-700 font-semibold hover:bg-blue-50 text-base'
+                className='text-blue-600 font-semibold text-xs md:text-base px-2 md:px-4 !bg-transparent hover:!bg-transparent hover:text-[#FFCB05] relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#FFCB05] hover:after:w-full after:transition-all after:duration-300'
                 onClick={() => router.push('/shop')}
               >
                 Amigos
@@ -179,35 +179,37 @@ export function Header({
           </div>
 
           {/* User Area with Level and XP */}
-          <div className='flex items-center gap-3'>
+          <div className='flex items-center gap-3 ml-auto -mr-8 md:-mr-16'>
             <Popover>
               <PopoverTrigger asChild>
-                <div className='flex items-center gap-3 bg-white rounded-full pl-4 pr-1.5 py-1.5 border-2 border-gray-200 cursor-pointer hover:bg-gray-50 transition-colors shadow-sm'>
-                  <div className='flex flex-col items-start min-w-[140px]'>
-                    <div className='flex items-center justify-between w-full mb-0.5'>
-                      <span className='text-xs font-bold text-gray-700'>
+                <div className='flex items-center gap-3 md:gap-4 bg-white rounded-full pl-4 md:pl-6 pr-2 md:pr-3 py-2 md:py-2.5 border-[3px] border-[#3C7CCA] cursor-pointer hover:shadow-lg transition-all shadow-md min-w-[180px] md:min-w-[320px]'>
+                  {/* Info section */}
+                  <div className='flex flex-col items-center flex-1 min-w-0'>
+                    <div className='flex items-center justify-between w-full mb-1'>
+                      <span className='text-xs md:text-base font-bold text-gray-900 truncate'>
                         {user.profile.name.split(' ')[0]}
                       </span>
-                      <span className='text-xs font-bold text-gray-600'>
+                      <span className='text-xs md:text-sm font-bold text-gray-700 ml-2'>
                         LEVEL {userLevel.level}
                       </span>
                     </div>
-                    <div className='w-full bg-gray-200 rounded-full h-2.5 overflow-hidden'>
+                    <div className='w-full bg-[#EAEAEA] rounded-full h-3 md:h-4 overflow-hidden'>
                       <div 
-                        className='bg-gradient-to-r from-green-400 to-green-500 h-full rounded-full transition-all duration-300'
+                        className='bg-[#00FF15] h-full rounded-full transition-all duration-300'
                         style={{ width: `${xpPercentage}%` }}
                       ></div>
                     </div>
-                    <span className='text-[10px] text-gray-500 mt-0.5'>
-                      XP: {userLevel.xp.toLocaleString()}
+                    <span className='text-[10px] md:text-xs text-gray-700 font-semibold mt-1 text-center'>
+                      XP {userLevel.xp}/{userLevel.xpToNextLevel}
                     </span>
                   </div>
-                  <Avatar className='border-2 border-purple-400 w-11 h-11 flex-shrink-0'>
+                  
+                  <Avatar className='border-[3px] border-[#3C7CCA] w-12 h-12 md:w-16 md:h-16 flex-shrink-0'>
                     <AvatarImage
                       src={getHouseDefaultImage(user.house)}
                       alt={user.profile.name}
                     />
-                    <AvatarFallback className={`${houseColorClass} text-white font-bold text-sm`}>
+                    <AvatarFallback className={`${houseColorClass} text-white font-bold text-sm md:text-lg`}>
                       {getInitials(user.profile.name)}
                     </AvatarFallback>
                   </Avatar>

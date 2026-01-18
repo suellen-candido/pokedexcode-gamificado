@@ -31,15 +31,18 @@ interface ClassCardProps {
 
 function ClassCard({ classData, isActive, isJoining, onCardClick, onJoinAttempt }: ClassCardProps) {
   const memberCount = Object.keys(classData.users || {}).length;
+  const isLocked = !classData.isActive;
+  
   return (
-    <Card className={cn('magical-border card-hover flex flex-col bg-card/50 border-border/20 cursor-pointer transition-all duration-300 ease-in-out', isActive && 'ring-2 ring-primary scale-105 shadow-primary/20')} onClick={onCardClick}>
-      <CardHeader><CardTitle className='flex items-center gap-2 text-xl'><BookOpen className='h-5 w-5 text-primary/80' />{classData.name}</CardTitle><CardDescription className='pt-1'>{classData.description}</CardDescription></CardHeader>
+    <Card className={cn('magical-border card-hover flex flex-col bg-card/50 border-border/20 cursor-pointer transition-all duration-300 ease-in-out', isActive && 'ring-2 ring-primary scale-105 shadow-primary/20', isLocked && 'opacity-60 cursor-not-allowed')} onClick={isLocked ? undefined : onCardClick}>
+      <CardHeader><CardTitle className='flex items-center gap-2 text-xl'>{isLocked ? <Lock className='h-5 w-5 text-muted-foreground' /> : <BookOpen className='h-5 w-5 text-primary/80' />}{classData.name}</CardTitle><CardDescription className='pt-1'>{classData.description}</CardDescription></CardHeader>
       <div className={cn('flex-grow flex flex-col transition-all duration-300 ease-in-out overflow-hidden', isActive ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0')}>
         <CardContent className='flex-grow space-y-4 pb-4'>
           <div className='flex items-center justify-between text-sm text-muted-foreground'><div className='flex items-center gap-2'><Users className='h-4 w-4 text-primary' /><span>{memberCount} Aluno(s)</span></div>{classData.isPrivate && <Badge variant='outline' className='flex items-center gap-1.5 border-accent/30 text-accent'><Lock className='h-3 w-3' />Privada</Badge>}</div>
-          <div className='flex flex-wrap gap-2 pt-2'><Badge variant='secondary'>Fórum</Badge><Badge variant='secondary'>Quizzes</Badge><Badge variant='secondary'>Duelos</Badge><Badge variant='secondary'>Loja</Badge></div>
+          {!isLocked && <div className='flex flex-wrap gap-2 pt-2'><Badge variant='secondary'>Fórum</Badge><Badge variant='secondary'>Quizzes</Badge><Badge variant='secondary'>Duelos</Badge><Badge variant='secondary'>Loja</Badge></div>}
+          {isLocked && <div className='pt-2'><Badge variant='outline' className='border-muted-foreground/30 text-muted-foreground'>🔒 Bloqueado - Em breve</Badge></div>}
         </CardContent>
-        <CardFooter><Button className='w-full button-hover group' disabled={isJoining} onClick={(event) => { event.stopPropagation(); onJoinAttempt(); }}>{isJoining ? (<><div className='mr-2 h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent' />Entrando...</>) : (<>Entrar na Turma<ArrowRight className='ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform' /></>)}</Button></CardFooter>
+        <CardFooter><Button className='w-full button-hover group' disabled={isJoining || isLocked} onClick={(event) => { event.stopPropagation(); if (!isLocked) onJoinAttempt(); }}>{isLocked ? (<>🔒 Turma Bloqueada</>) : isJoining ? (<><div className='mr-2 h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent' />Entrando...</>) : (<>Entrar na Turma<ArrowRight className='ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform' /></>)}</Button></CardFooter>
       </div>
     </Card>
   );

@@ -19,7 +19,8 @@
       "theme": "dark"
     },
     "enrollments": [
-      "class-01"
+      "class-01",
+      "class-02"
     ],
     "auth": {
       "password": "$2b$10$1W3mWNIEiy1GmI9GXYbp.Oo0WFRU7UvOZT7KEZ8RWpPGU0IT3SFtC"

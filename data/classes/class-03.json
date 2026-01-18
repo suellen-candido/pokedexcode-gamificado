@@ -1,0 +1,28 @@
+[
+  {
+    "id": "class-03",
+    "name": "Terceiro Semestre",
+    "description": "Conteúdo avançado - Esta turma estará disponível em breve. Continue progredindo nos semestres anteriores!",
+    "professorId": "user-snape",
+    "isPrivate": true,
+    "password": "bloqueado2025",
+    "isActive": false,
+    "createdAt": "2025-10-10T23:00:00.000Z",
+    "users": {},
+    "achievements": [
+      {
+        "id": "ach-001",
+        "name": "Primeiro Pokémon Capturado",
+        "description": "Complete sua primeira missão na plataforma.",
+        "icon": "🪄",
+        "xpReward": 50
+      }
+    ],
+    "missions": [],
+    "quizzes": [],
+    "shop": [],
+    "socialFeed": [],
+    "forumPosts": [],
+    "announcements": []
+  }
+]

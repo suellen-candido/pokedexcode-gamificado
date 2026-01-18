@@ -1,0 +1,107 @@
+[
+  {
+    "id": "class-02",
+    "name": "Segundo Semestre",
+    "description": "POO e Estrutura de dados em Python - Domine programação orientada a objetos e estruturas de dados avançadas.",
+    "professorId": "user-snape",
+    "isPrivate": false,
+    "password": null,
+    "isActive": true,
+    "createdAt": "2025-10-10T23:00:00.000Z",
+    "users": {
+      "c205ef2e-062c-471d-aaa0-b2e9dec51fea": {
+        "progress": {
+          "xp": 0,
+          "level": 1,
+          "streak": 0,
+          "currencies": {
+            "galleons": 0,
+            "gems": 0
+          }
+        },
+        "completedQuizzes": {},
+        "missionProgress": {},
+        "unlockedAchievements": [],
+        "inventory": []
+      }
+    },
+    "achievements": [
+      {
+        "id": "ach-001",
+        "name": "Primeiro Pokémon Capturado",
+        "description": "Complete sua primeira missão na plataforma.",
+        "icon": "🪄",
+        "xpReward": 50
+      },
+      {
+        "id": "ach-002",
+        "name": "Nascido para o Código",
+        "description": "Acerte mais de 90% em seu primeiro quiz de Python.",
+        "icon": "📜",
+        "xpReward": 100
+      },
+      {
+        "id": "ach-003",
+        "name": "Mestre da POO",
+        "description": "Complete a missão de criar uma classe complexa com herança.",
+        "icon": "⚛️",
+        "xpReward": 250
+      }
+    ],
+    "missions": [
+      {
+        "id": "mission-poo-01",
+        "title": "Classes e Objetos",
+        "description": "Crie sua primeira classe em Python e instancie objetos.",
+        "icon": "🐍",
+        "xpReward": 150,
+        "galleonReward": 20,
+        "objective": {
+          "type": "code_submission"
+        },
+        "unlocksAchievementId": null
+      },
+      {
+        "id": "mission-poo-02",
+        "title": "Herança e Polimorfismo",
+        "description": "Implemente herança entre classes e use polimorfismo.",
+        "icon": "🔄",
+        "xpReward": 250,
+        "galleonReward": 35,
+        "objective": {
+          "type": "code_submission"
+        },
+        "unlocksAchievementId": null
+      },
+      {
+        "id": "mission-estrutura-01",
+        "title": "Listas e Tuplas",
+        "description": "Manipule estruturas de dados básicas em Python.",
+        "icon": "📊",
+        "xpReward": 150,
+        "galleonReward": 20,
+        "objective": {
+          "type": "code_submission"
+        },
+        "unlocksAchievementId": null
+      },
+      {
+        "id": "mission-estrutura-02",
+        "title": "Dicionários e Sets",
+        "description": "Trabalhe com estruturas de dados avançadas.",
+        "icon": "🗂️",
+        "xpReward": 200,
+        "galleonReward": 30,
+        "objective": {
+          "type": "code_submission"
+        },
+        "unlocksAchievementId": "ach-003"
+      }
+    ],
+    "quizzes": [],
+    "shop": [],
+    "socialFeed": [],
+    "forumPosts": [],
+    "announcements": []
+  }
+]
