@@ -39,7 +39,7 @@ export async function GET(request: NextRequest) {
     const enrichedClassData = {
       ...classInfo,
       professor: {
-        name: professorProfile?.profile.name || 'Desconhecido',
+        name: professorProfile?.profile.name || 'Anderson Uchôa',
         avatar: professorProfile?.profile.avatar || '',
       }
     };
