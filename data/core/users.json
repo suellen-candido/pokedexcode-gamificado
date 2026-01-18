@@ -24,5 +24,31 @@
     "auth": {
       "password": "$2b$10$1W3mWNIEiy1GmI9GXYbp.Oo0WFRU7UvOZT7KEZ8RWpPGU0IT3SFtC"
     }
+  },
+  {
+    "id": "4f0b22be-448d-436a-a2df-cb040dac17ec",
+    "email": "pablo.cauacaio@gmail.com",
+    "role": "student",
+    "house": "gryffindor",
+    "profile": {
+      "avatar": "https://i.pinimg.com/originals/a0/64/bb/a064bb61c112493c31ac052d21220b70.jpg",
+      "name": "Pablo Caio"
+    },
+    "activity": {
+      "createdAt": "2026-01-18T17:22:06.999Z",
+      "isActive": false,
+      "lastSeen": "2026-01-18T17:22:06.999Z"
+    },
+    "preferences": {
+      "language": "pt-BR",
+      "notifications": true,
+      "theme": "dark"
+    },
+    "enrollments": [
+      "class-01"
+    ],
+    "auth": {
+      "password": "$2b$10$/Kd6usTE69hQakWrM1WAA.oR/gPLr8oCozuA1EHK5ZfgELV9Lh8v2"
+    }
   }
 ]

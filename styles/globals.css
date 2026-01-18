@@ -355,3 +355,10 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Estilo para sprites pixelados do Pokémon */
+.pixelated {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}

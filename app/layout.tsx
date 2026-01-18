@@ -1,7 +1,6 @@
 import { GeistSans } from 'geist/font/sans';
 import type { Metadata } from 'next';
 import type React from 'react';
-import BackgroundMusic from '@/lib/client/components/background-music';
 import { AuthProvider } from '@/lib/client/contexts/auth-context';
 import '@/styles/globals.css';
 import TanstackProvider from '@/lib/client/providers/tanstack-provider';
@@ -27,8 +26,6 @@ export default function RootLayout({
         <TanstackProvider>
           <AuthProvider>{children}</AuthProvider>
         </TanstackProvider>
-
-        <BackgroundMusic />
       </body>
     </html>
   );

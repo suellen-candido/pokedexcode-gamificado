@@ -157,7 +157,7 @@ export function Header({
               <Button
                 variant='ghost'
                 className='text-blue-600 hover:text-blue-700 font-semibold hover:bg-blue-50 text-base'
-                onClick={() => router.push('/potions')}
+                onClick={() => router.push('/randombattle/battle?mode=random')}
               >
                 Batalhar
               </Button>
@@ -256,7 +256,7 @@ export function Header({
                       variant='ghost'
                       size='sm'
                       className='w-full justify-start text-sm'
-                      onClick={() => router.push('/potions')}
+                      onClick={() => router.push('/randombattle/battle?mode=random')}
                     >
                       <Swords className='w-4 h-4 mr-2' /> Batalhar
                     </Button>

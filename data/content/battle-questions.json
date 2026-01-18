@@ -1,0 +1,649 @@
+{
+  "questions": [
+    {
+      "id": "q001",
+      "question": "Qual é a saída do seguinte código? console.log(typeof null)",
+      "options": ["'null'", "'undefined'", "'object'", "'number'"],
+      "correctAnswer": 2,
+      "difficulty": "easy",
+      "category": "JavaScript",
+      "explanation": "typeof null retorna 'object' devido a um bug histórico do JavaScript que nunca foi corrigido."
+    },
+    {
+      "id": "q002",
+      "question": "Qual método é usado para adicionar um elemento ao final de um array em JavaScript?",
+      "options": ["append()", "push()", "add()", "insert()"],
+      "correctAnswer": 1,
+      "difficulty": "easy",
+      "category": "JavaScript",
+      "explanation": "O método push() adiciona um ou mais elementos ao final de um array."
+    },
+    {
+      "id": "q003",
+      "question": "O que é CSS?",
+      "options": [
+        "Uma linguagem de programação",
+        "Uma linguagem de marcação",
+        "Uma linguagem de estilo",
+        "Um banco de dados"
+      ],
+      "correctAnswer": 2,
+      "difficulty": "easy",
+      "category": "CSS",
+      "explanation": "CSS (Cascading Style Sheets) é uma linguagem de estilo usada para descrever a apresentação de documentos HTML."
+    },
+    {
+      "id": "q004",
+      "question": "Qual é o resultado de '2' + 2 em JavaScript?",
+      "options": ["4", "'22'", "NaN", "undefined"],
+      "correctAnswer": 1,
+      "difficulty": "easy",
+      "category": "JavaScript",
+      "explanation": "Quando um operando é string, o operador + realiza concatenação, resultando em '22'."
+    },
+    {
+      "id": "q005",
+      "question": "O que é o DOM?",
+      "options": [
+        "Document Object Model",
+        "Data Object Management",
+        "Digital Output Method",
+        "Dynamic Object Module"
+      ],
+      "correctAnswer": 0,
+      "difficulty": "easy",
+      "category": "Web",
+      "explanation": "DOM significa Document Object Model, uma interface de programação para documentos HTML e XML."
+    },
+    {
+      "id": "q006",
+      "question": "Qual palavra-chave é usada para declarar uma variável constante em JavaScript?",
+      "options": ["var", "let", "const", "define"],
+      "correctAnswer": 2,
+      "difficulty": "easy",
+      "category": "JavaScript",
+      "explanation": "A palavra-chave const é usada para declarar constantes, cujos valores não podem ser reatribuídos."
+    },
+    {
+      "id": "q007",
+      "question": "O que é closure em JavaScript?",
+      "options": [
+        "Uma função que fecha o navegador",
+        "Uma função que tem acesso ao escopo da função externa",
+        "Um método para fechar conexões",
+        "Um tipo de loop"
+      ],
+      "correctAnswer": 1,
+      "difficulty": "medium",
+      "category": "JavaScript",
+      "explanation": "Closure é uma função que mantém acesso às variáveis do escopo externo, mesmo após a função externa ter sido executada."
+    },
+    {
+      "id": "q008",
+      "question": "Qual é a diferença entre == e === em JavaScript?",
+      "options": [
+        "Não há diferença",
+        "=== compara apenas valores",
+        "== compara valor e tipo, === compara apenas valor",
+        "== compara valor, === compara valor e tipo"
+      ],
+      "correctAnswer": 3,
+      "difficulty": "medium",
+      "category": "JavaScript",
+      "explanation": "== realiza coerção de tipo e compara valores, === compara valores E tipos sem coerção."
+    },
+    {
+      "id": "q009",
+      "question": "O que é hoisting em JavaScript?",
+      "options": [
+        "Um método de ordenação",
+        "Elevação de declarações para o topo do escopo",
+        "Uma técnica de compressão",
+        "Um tipo de loop"
+      ],
+      "correctAnswer": 1,
+      "difficulty": "medium",
+      "category": "JavaScript",
+      "explanation": "Hoisting é o comportamento do JavaScript de mover declarações para o topo de seu escopo durante a compilação."
+    },
+    {
+      "id": "q010",
+      "question": "Qual propriedade CSS é usada para controlar o espaçamento entre elementos?",
+      "options": ["spacing", "padding", "margin", "gap"],
+      "correctAnswer": 2,
+      "difficulty": "easy",
+      "category": "CSS",
+      "explanation": "Margin controla o espaço externo entre elementos. Padding controla o espaço interno."
+    },
+    {
+      "id": "q011",
+      "question": "O que é o event bubbling?",
+      "options": [
+        "Um erro no JavaScript",
+        "Propagação de eventos do elemento filho para os pais",
+        "Um método de animação",
+        "Uma técnica de debugging"
+      ],
+      "correctAnswer": 1,
+      "difficulty": "medium",
+      "category": "JavaScript",
+      "explanation": "Event bubbling é quando um evento dispara primeiro no elemento mais interno e então propaga para os elementos pais."
+    },
+    {
+      "id": "q012",
+      "question": "Qual método HTTP é usado para criar um novo recurso?",
+      "options": ["GET", "POST", "PUT", "DELETE"],
+      "correctAnswer": 1,
+      "difficulty": "medium",
+      "category": "HTTP",
+      "explanation": "POST é usado para criar novos recursos. PUT é para atualizar/substituir recursos existentes."
+    },
+    {
+      "id": "q013",
+      "question": "O que é async/await em JavaScript?",
+      "options": [
+        "Funções síncronas",
+        "Sintaxe para trabalhar com Promises de forma mais limpa",
+        "Um tipo de loop",
+        "Um método de array"
+      ],
+      "correctAnswer": 1,
+      "difficulty": "medium",
+      "category": "JavaScript",
+      "explanation": "async/await é uma sintaxe que simplifica o trabalho com código assíncrono baseado em Promises."
+    },
+    {
+      "id": "q014",
+      "question": "Qual é a complexidade de tempo do algoritmo de busca binária?",
+      "options": ["O(n)", "O(log n)", "O(n²)", "O(1)"],
+      "correctAnswer": 1,
+      "difficulty": "hard",
+      "category": "Algoritmos",
+      "explanation": "Busca binária tem complexidade O(log n) porque divide o espaço de busca pela metade a cada iteração."
+    },
+    {
+      "id": "q015",
+      "question": "O que é o Virtual DOM no React?",
+      "options": [
+        "Uma cópia em memória do DOM real",
+        "Um DOM falso",
+        "Um servidor virtual",
+        "Um tipo de componente"
+      ],
+      "correctAnswer": 0,
+      "difficulty": "medium",
+      "category": "React",
+      "explanation": "Virtual DOM é uma representação em memória do DOM real, permitindo atualizações mais eficientes."
+    },
+    {
+      "id": "q016",
+      "question": "Qual padrão de design é usado para criar objetos sem especificar suas classes exatas?",
+      "options": ["Singleton", "Factory", "Observer", "Strategy"],
+      "correctAnswer": 1,
+      "difficulty": "hard",
+      "category": "Design Patterns",
+      "explanation": "O padrão Factory fornece uma interface para criar objetos sem especificar suas classes concretas."
+    },
+    {
+      "id": "q017",
+      "question": "O que é SOLID em programação orientada a objetos?",
+      "options": [
+        "Um tipo de dado",
+        "Um conjunto de princípios de design",
+        "Uma linguagem de programação",
+        "Um framework"
+      ],
+      "correctAnswer": 1,
+      "difficulty": "hard",
+      "category": "POO",
+      "explanation": "SOLID é um acrônimo para cinco princípios de design que tornam o software mais compreensível, flexível e manutenível."
+    },
+    {
+      "id": "q018",
+      "question": "Qual é o propósito do método reduce() em JavaScript?",
+      "options": [
+        "Reduzir o tamanho de um array",
+        "Aplicar uma função acumuladora aos elementos do array",
+        "Remover elementos duplicados",
+        "Ordenar elementos"
+      ],
+      "correctAnswer": 1,
+      "difficulty": "medium",
+      "category": "JavaScript",
+      "explanation": "reduce() executa uma função redutora para cada elemento, resultando em um único valor de retorno."
+    },
+    {
+      "id": "q019",
+      "question": "O que é memoization?",
+      "options": [
+        "Uma técnica de memorização",
+        "Cache de resultados de funções para otimização",
+        "Um tipo de banco de dados",
+        "Um padrão de design"
+      ],
+      "correctAnswer": 1,
+      "difficulty": "hard",
+      "category": "Otimização",
+      "explanation": "Memoization é uma técnica de otimização que armazena resultados de funções caras para reutilização."
+    },
+    {
+      "id": "q020",
+      "question": "Qual estrutura de dados usa FIFO (First In, First Out)?",
+      "options": ["Stack", "Queue", "Tree", "Graph"],
+      "correctAnswer": 1,
+      "difficulty": "medium",
+      "category": "Estruturas de Dados",
+      "explanation": "Queue (fila) segue o princípio FIFO, onde o primeiro elemento inserido é o primeiro a ser removido."
+    },
+    {
+      "id": "q021",
+      "question": "O que é o princípio DRY?",
+      "options": [
+        "Don't Repeat Yourself",
+        "Do Run Yourself",
+        "Data Replication Year",
+        "Debug Run Yield"
+      ],
+      "correctAnswer": 0,
+      "difficulty": "medium",
+      "category": "Boas Práticas",
+      "explanation": "DRY (Don't Repeat Yourself) é um princípio que visa reduzir repetição de código."
+    },
+    {
+      "id": "q022",
+      "question": "Qual é a diferença entre null e undefined?",
+      "options": [
+        "São idênticos",
+        "null é ausência intencional, undefined é ausência não intencional",
+        "undefined é um erro",
+        "null é mais recente"
+      ],
+      "correctAnswer": 1,
+      "difficulty": "medium",
+      "category": "JavaScript",
+      "explanation": "null representa ausência intencional de valor, undefined indica que uma variável foi declarada mas não inicializada."
+    },
+    {
+      "id": "q023",
+      "question": "O que é Big O notation?",
+      "options": [
+        "Um sistema numérico",
+        "Notação para descrever complexidade de algoritmos",
+        "Uma linguagem de programação",
+        "Um tipo de função"
+      ],
+      "correctAnswer": 1,
+      "difficulty": "hard",
+      "category": "Algoritmos",
+      "explanation": "Big O notation descreve o comportamento assintótico de algoritmos, especialmente sua complexidade de tempo ou espaço."
+    },
+    {
+      "id": "q024",
+      "question": "O que é uma Promise em JavaScript?",
+      "options": [
+        "Uma função síncrona",
+        "Um objeto representando conclusão ou falha de uma operação assíncrona",
+        "Um tipo de variável",
+        "Um método de array"
+      ],
+      "correctAnswer": 1,
+      "difficulty": "medium",
+      "category": "JavaScript",
+      "explanation": "Promise é um objeto que representa a eventual conclusão (ou falha) de uma operação assíncrona."
+    },
+    {
+      "id": "q025",
+      "question": "Qual princípio SOLID afirma que uma classe deve ter apenas uma razão para mudar?",
+      "options": [
+        "Open/Closed",
+        "Single Responsibility",
+        "Liskov Substitution",
+        "Dependency Inversion"
+      ],
+      "correctAnswer": 1,
+      "difficulty": "hard",
+      "category": "SOLID",
+      "explanation": "Single Responsibility Principle afirma que uma classe deve ter apenas uma responsabilidade ou razão para mudar."
+    },
+    {
+      "id": "q026",
+      "question": "O que é RESTful API?",
+      "options": [
+        "Uma API que descansa",
+        "API que segue princípios REST (Representational State Transfer)",
+        "Um tipo de banco de dados",
+        "Uma linguagem de programação"
+      ],
+      "correctAnswer": 1,
+      "difficulty": "medium",
+      "category": "APIs",
+      "explanation": "RESTful API é uma interface que adere aos princípios e restrições da arquitetura REST."
+    },
+    {
+      "id": "q027",
+      "question": "Qual é a diferença entre let e var em JavaScript?",
+      "options": [
+        "Não há diferença",
+        "let tem escopo de bloco, var tem escopo de função",
+        "var é mais novo",
+        "let é mais lento"
+      ],
+      "correctAnswer": 1,
+      "difficulty": "medium",
+      "category": "JavaScript",
+      "explanation": "let tem escopo de bloco, enquanto var tem escopo de função e sofre hoisting de forma diferente."
+    },
+    {
+      "id": "q028",
+      "question": "O que é recursão?",
+      "options": [
+        "Um loop infinito",
+        "Uma função que chama a si mesma",
+        "Um tipo de array",
+        "Um erro de programação"
+      ],
+      "correctAnswer": 1,
+      "difficulty": "medium",
+      "category": "Algoritmos",
+      "explanation": "Recursão é uma técnica onde uma função chama a si mesma para resolver um problema dividindo-o em subproblemas menores."
+    },
+    {
+      "id": "q029",
+      "question": "Qual padrão de design permite adicionar comportamento a objetos sem afetar outros objetos da mesma classe?",
+      "options": ["Singleton", "Factory", "Decorator", "Adapter"],
+      "correctAnswer": 2,
+      "difficulty": "hard",
+      "category": "Design Patterns",
+      "explanation": "O padrão Decorator permite adicionar novos comportamentos a objetos dinamicamente sem alterar sua estrutura."
+    },
+    {
+      "id": "q030",
+      "question": "O que é SQL Injection?",
+      "options": [
+        "Um tipo de banco de dados",
+        "Uma vulnerabilidade de segurança",
+        "Um método de otimização",
+        "Uma linguagem de programação"
+      ],
+      "correctAnswer": 1,
+      "difficulty": "hard",
+      "category": "Segurança",
+      "explanation": "SQL Injection é uma vulnerabilidade onde código SQL malicioso é inserido em campos de entrada para manipular o banco de dados."
+    },
+    {
+      "id": "q031",
+      "question": "O que é a complexidade espacial?",
+      "options": [
+        "Tamanho do código",
+        "Quantidade de memória usada por um algoritmo",
+        "Velocidade de execução",
+        "Número de linhas"
+      ],
+      "correctAnswer": 1,
+      "difficulty": "hard",
+      "category": "Algoritmos",
+      "explanation": "Complexidade espacial mede a quantidade de memória que um algoritmo precisa em relação ao tamanho da entrada."
+    },
+    {
+      "id": "q032",
+      "question": "O que é debouncing?",
+      "options": [
+        "Um erro de código",
+        "Técnica para limitar a frequência de execução de uma função",
+        "Um tipo de loop",
+        "Um método de array"
+      ],
+      "correctAnswer": 1,
+      "difficulty": "hard",
+      "category": "JavaScript",
+      "explanation": "Debouncing é uma técnica que atrasa a execução de uma função até que um certo tempo tenha passado sem que ela seja chamada novamente."
+    },
+    {
+      "id": "q033",
+      "question": "Qual é o propósito do método map() em JavaScript?",
+      "options": [
+        "Criar um mapa",
+        "Transformar cada elemento de um array",
+        "Encontrar um elemento",
+        "Ordenar elementos"
+      ],
+      "correctAnswer": 1,
+      "difficulty": "easy",
+      "category": "JavaScript",
+      "explanation": "map() cria um novo array com os resultados da aplicação de uma função a cada elemento do array original."
+    },
+    {
+      "id": "q034",
+      "question": "O que é time complexity?",
+      "options": [
+        "Tempo de compilação",
+        "Medida de quanto tempo um algoritmo leva para executar",
+        "Hora do dia",
+        "Timeout de conexão"
+      ],
+      "correctAnswer": 1,
+      "difficulty": "medium",
+      "category": "Algoritmos",
+      "explanation": "Time complexity é uma medida computacional que descreve quanto tempo um algoritmo leva para executar em função do tamanho da entrada."
+    },
+    {
+      "id": "q035",
+      "question": "O que é Cross-Site Scripting (XSS)?",
+      "options": [
+        "Um framework JavaScript",
+        "Uma vulnerabilidade que permite injeção de scripts maliciosos",
+        "Um método de estilização",
+        "Um tipo de banco de dados"
+      ],
+      "correctAnswer": 1,
+      "difficulty": "expert",
+      "category": "Segurança",
+      "explanation": "XSS é uma vulnerabilidade que permite que atacantes injetem scripts maliciosos em páginas web visualizadas por outros usuários."
+    },
+    {
+      "id": "q036",
+      "question": "O que é o padrão MVC?",
+      "options": [
+        "Model-View-Controller",
+        "Multiple-Variable-Control",
+        "Master-Version-Control",
+        "Method-Validation-Class"
+      ],
+      "correctAnswer": 0,
+      "difficulty": "medium",
+      "category": "Arquitetura",
+      "explanation": "MVC (Model-View-Controller) é um padrão arquitetural que separa a aplicação em três componentes interconectados."
+    },
+    {
+      "id": "q037",
+      "question": "Qual é a diferença entre composição e herança?",
+      "options": [
+        "São iguais",
+        "Composição usa 'has-a', herança usa 'is-a'",
+        "Herança é melhor",
+        "Composição é mais antiga"
+      ],
+      "correctAnswer": 1,
+      "difficulty": "hard",
+      "category": "POO",
+      "explanation": "Composição é uma relação 'has-a' (tem um), enquanto herança é 'is-a' (é um). Composição é geralmente mais flexível."
+    },
+    {
+      "id": "q038",
+      "question": "O que é throttling?",
+      "options": [
+        "Acelerar código",
+        "Limitar a taxa de execução de uma função",
+        "Um tipo de loop",
+        "Um erro"
+      ],
+      "correctAnswer": 1,
+      "difficulty": "hard",
+      "category": "JavaScript",
+      "explanation": "Throttling garante que uma função seja executada no máximo uma vez em um intervalo de tempo especificado."
+    },
+    {
+      "id": "q039",
+      "question": "O que é immutability?",
+      "options": [
+        "Impossibilidade de mudar",
+        "Dados que não podem ser modificados após criação",
+        "Um tipo de variável",
+        "Um método"
+      ],
+      "correctAnswer": 1,
+      "difficulty": "medium",
+      "category": "Programação Funcional",
+      "explanation": "Immutability significa que uma vez criado, um dado não pode ser alterado. Qualquer modificação cria um novo objeto."
+    },
+    {
+      "id": "q040",
+      "question": "Qual é a diferença entre deep copy e shallow copy?",
+      "options": [
+        "Não há diferença",
+        "Deep copy copia todos os níveis, shallow copy só o primeiro",
+        "Shallow copy é mais rápida",
+        "Deep copy é mais antiga"
+      ],
+      "correctAnswer": 1,
+      "difficulty": "hard",
+      "category": "JavaScript",
+      "explanation": "Shallow copy copia apenas o primeiro nível, deep copy copia recursivamente todos os níveis de objetos aninhados."
+    },
+    {
+      "id": "q041",
+      "question": "O que é garbage collection?",
+      "options": [
+        "Limpeza de código",
+        "Gerenciamento automático de memória",
+        "Remoção de bugs",
+        "Organização de arquivos"
+      ],
+      "correctAnswer": 1,
+      "difficulty": "hard",
+      "category": "Conceitos",
+      "explanation": "Garbage collection é o processo automático de liberar memória que não está mais sendo usada pelo programa."
+    },
+    {
+      "id": "q042",
+      "question": "O que é CI/CD?",
+      "options": [
+        "Continuous Integration / Continuous Deployment",
+        "Code Integration / Code Deployment",
+        "Computer Integration / Computer Deployment",
+        "Cloud Integration / Cloud Deployment"
+      ],
+      "correctAnswer": 0,
+      "difficulty": "medium",
+      "category": "DevOps",
+      "explanation": "CI/CD é uma prática de desenvolvimento que automatiza integração e deployment de código."
+    },
+    {
+      "id": "q043",
+      "question": "Qual estrutura de dados usa LIFO (Last In, First Out)?",
+      "options": ["Queue", "Stack", "Tree", "Graph"],
+      "correctAnswer": 1,
+      "difficulty": "medium",
+      "category": "Estruturas de Dados",
+      "explanation": "Stack (pilha) segue o princípio LIFO, onde o último elemento inserido é o primeiro a ser removido."
+    },
+    {
+      "id": "q044",
+      "question": "O que é prototype em JavaScript?",
+      "options": [
+        "Um tipo de função",
+        "Mecanismo de herança de objetos",
+        "Um erro",
+        "Uma variável especial"
+      ],
+      "correctAnswer": 1,
+      "difficulty": "hard",
+      "category": "JavaScript",
+      "explanation": "Prototype é o mecanismo pelo qual objetos JavaScript herdam recursos uns dos outros."
+    },
+    {
+      "id": "q045",
+      "question": "O que é web socket?",
+      "options": [
+        "Um tipo de URL",
+        "Protocolo de comunicação bidirecional em tempo real",
+        "Um servidor web",
+        "Um framework"
+      ],
+      "correctAnswer": 1,
+      "difficulty": "hard",
+      "category": "Web",
+      "explanation": "WebSocket é um protocolo que fornece canais de comunicação full-duplex sobre uma única conexão TCP."
+    },
+    {
+      "id": "q046",
+      "question": "O que é destructuring em JavaScript?",
+      "options": [
+        "Destruir objetos",
+        "Sintaxe para extrair valores de arrays/objetos",
+        "Um erro",
+        "Remover propriedades"
+      ],
+      "correctAnswer": 1,
+      "difficulty": "medium",
+      "category": "JavaScript",
+      "explanation": "Destructuring é uma sintaxe que permite extrair dados de arrays ou objetos em variáveis distintas."
+    },
+    {
+      "id": "q047",
+      "question": "Qual é o propósito do método filter() em JavaScript?",
+      "options": [
+        "Filtrar água",
+        "Criar novo array com elementos que passam em um teste",
+        "Remover todos os elementos",
+        "Ordenar elementos"
+      ],
+      "correctAnswer": 1,
+      "difficulty": "easy",
+      "category": "JavaScript",
+      "explanation": "filter() cria um novo array com todos os elementos que passam no teste implementado pela função fornecida."
+    },
+    {
+      "id": "q048",
+      "question": "O que é CORS?",
+      "options": [
+        "Cross-Origin Resource Sharing",
+        "Computer Origin Resource System",
+        "Code Origin Resource Sharing",
+        "Cloud Origin Resource System"
+      ],
+      "correctAnswer": 0,
+      "difficulty": "hard",
+      "category": "Web",
+      "explanation": "CORS é um mecanismo que permite que recursos restritos em uma página web sejam solicitados de outro domínio."
+    },
+    {
+      "id": "q049",
+      "question": "O que é tree shaking?",
+      "options": [
+        "Balançar árvores",
+        "Remoção de código não utilizado durante build",
+        "Um tipo de algoritmo",
+        "Um framework"
+      ],
+      "correctAnswer": 1,
+      "difficulty": "expert",
+      "category": "Otimização",
+      "explanation": "Tree shaking é uma técnica de otimização que elimina código morto/não utilizado do bundle final."
+    },
+    {
+      "id": "q050",
+      "question": "O que é uma callback function?",
+      "options": [
+        "Uma função que retorna",
+        "Uma função passada como argumento para outra função",
+        "Uma função recursiva",
+        "Um tipo de loop"
+      ],
+      "correctAnswer": 1,
+      "difficulty": "easy",
+      "category": "JavaScript",
+      "explanation": "Callback é uma função passada como argumento para outra função, para ser executada posteriormente."
+    }
+  ]
+}
