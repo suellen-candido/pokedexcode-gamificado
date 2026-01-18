@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { Button } from '@/lib/client/components/ui/button';
 import {
   Card,
@@ -16,234 +16,332 @@ import {
   TabsList,
   TabsTrigger,
 } from '@/lib/client/components/ui/tabs';
-import { Coins, Star, Eye, ShoppingBag } from 'lucide-react';
+import { Coins, Star, ShoppingBag, Heart, Shield, Zap, Sparkles } from 'lucide-react';
 import {
   useAuthState,
   useAuthActions,
 } from '@/lib/client/contexts/auth-context';
 import { useClassStore } from '@/lib/client/store/class-store';
-import { useRouter } from 'next/navigation';
 import { LoadingScreen } from '@/lib/client/components/loading-screen';
 import { AuthenticatedLayout } from '@/lib/client/components/layout/AuthenticatedLayout';
-import {
-  ShopItem,
-  ShopCategory,
-  shopItemsData,
-  getShopRarityColor,
-  getShopRarityText,
-  getShopCurrencyIcon,
-  getShopCurrencyName,
-  shopCategories,
-} from '@/lib/core/domain/shop';
 import { Header } from '@/lib/client/components/great-hall/header';
 
-interface DisplayShopItem extends ShopItem {
-  owned: boolean;
+interface ShopItem {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  category: 'potions' | 'equipment' | 'consumables';
+  rarity: 'common' | 'rare' | 'epic' | 'legendary';
+  effect: string;
+  icon: string;
 }
+
+const shopItems: ShopItem[] = [
+  // Poções
+  {
+    id: 'health-potion-small',
+    name: 'Poção de Vida Pequena',
+    description: 'Restaura 50 HP',
+    price: 50,
+    category: 'potions',
+    rarity: 'common',
+    effect: '+50 HP',
+    icon: '🧪',
+  },
+  {
+    id: 'health-potion-medium',
+    name: 'Poção de Vida Média',
+    description: 'Restaura 100 HP',
+    price: 100,
+    category: 'potions',
+    rarity: 'rare',
+    effect: '+100 HP',
+    icon: '🧪',
+  },
+  {
+    id: 'health-potion-large',
+    name: 'Poção de Vida Grande',
+    description: 'Restaura 200 HP',
+    price: 200,
+    category: 'potions',
+    rarity: 'epic',
+    effect: '+200 HP',
+    icon: '🧪',
+  },
+  {
+    id: 'antidote-potion',
+    name: 'Antídoto',
+    description: 'Cura envenenamento',
+    price: 75,
+    category: 'potions',
+    rarity: 'rare',
+    effect: 'Remove Veneno',
+    icon: '💉',
+  },
+  {
+    id: 'energy-potion',
+    name: 'Poção de Energia',
+    description: 'Restaura 100% de energia',
+    price: 150,
+    category: 'potions',
+    rarity: 'epic',
+    effect: '+100% Energia',
+    icon: '⚡',
+  },
+  {
+    id: 'elixir-vitality',
+    name: 'Elixir da Vitalidade',
+    description: 'Restaura HP e cura todos os status negativos',
+    price: 500,
+    category: 'potions',
+    rarity: 'legendary',
+    effect: 'HP Completo + Remove Status',
+    icon: '✨',
+  },
+  
+  // Equipamentos
+  {
+    id: 'wooden-shield',
+    name: 'Escudo de Madeira',
+    description: 'Aumenta defesa em 10',
+    price: 200,
+    category: 'equipment',
+    rarity: 'common',
+    effect: '+10 Defesa',
+    icon: '🛡️',
+  },
+  {
+    id: 'iron-shield',
+    name: 'Escudo de Ferro',
+    description: 'Aumenta defesa em 25',
+    price: 400,
+    category: 'equipment',
+    rarity: 'rare',
+    effect: '+25 Defesa',
+    icon: '🛡️',
+  },
+  {
+    id: 'magic-amulet',
+    name: 'Amuleto Mágico',
+    description: 'Aumenta HP máximo em 50',
+    price: 350,
+    category: 'equipment',
+    rarity: 'rare',
+    effect: '+50 HP Máximo',
+    icon: '📿',
+  },
+  
+  // Consumíveis
+  {
+    id: 'xp-boost-small',
+    name: 'Boost de XP (30min)',
+    description: 'Aumenta ganho de XP em 50% por 30 minutos',
+    price: 100,
+    category: 'consumables',
+    rarity: 'rare',
+    effect: '+50% XP (30min)',
+    icon: '🌟',
+  },
+  {
+    id: 'xp-boost-large',
+    name: 'Boost de XP (1h)',
+    description: 'Aumenta ganho de XP em 100% por 1 hora',
+    price: 250,
+    category: 'consumables',
+    rarity: 'epic',
+    effect: '+100% XP (1h)',
+    icon: '⭐',
+  },
+  {
+    id: 'lucky-coin',
+    name: 'Moeda da Sorte',
+    description: 'Aumenta taxa de drop em 25%',
+    price: 300,
+    category: 'consumables',
+    rarity: 'epic',
+    effect: '+25% Drop Rate',
+    icon: '🪙',
+  },
+];
 
 function ShopPageContent() {
   const { user } = useAuthState();
   const { logout } = useAuthActions();
   const { classInfo } = useClassStore();
-  const router = useRouter();
+  const [selectedCategory, setSelectedCategory] = useState<'all' | 'potions' | 'equipment' | 'consumables'>('all');
 
   if (!user || !classInfo) {
-    console.error('ShopPageContent renderizado sem user ou classInfo!');
     return <LoadingScreen message='Aguardando dados...' />;
   }
 
   const userCurrencies = useMemo(
     () => ({
       galleons: classInfo.users?.[user.id]?.progress.currencies.galleons ?? 0,
-      sickles: classInfo.users?.[user.id]?.progress.currencies.sickles ?? 0,
-      knuts: classInfo.users?.[user.id]?.progress.currencies.knuts ?? 0,
     }),
     [classInfo, user.id],
   );
 
-  const userInventory = useMemo(
-    () => classInfo.users?.[user.id]?.inventory ?? [],
-    [classInfo, user.id],
-  );
-
-  const displayShopItems: DisplayShopItem[] = useMemo(() => {
-    return shopItemsData.map((item) => ({
-      ...item,
-      owned: userInventory.includes(item.id),
-    }));
-  }, [userInventory]);
-
-  const canAfford = (item: ShopItem) => {
-    const currencyKey = item.currency as keyof typeof userCurrencies;
-    return (
-      userCurrencies[currencyKey] !== undefined &&
-      userCurrencies[currencyKey] >= item.price
-    );
-  };
-
-  const handlePurchase = (item: ShopItem) => {
-    if (canAfford(item) && !userInventory.includes(item.id)) {
-      console.log(`Comprando ${item.name} por ${item.price} ${item.currency}`);
+  const getRarityColor = (rarity: string) => {
+    switch (rarity) {
+      case 'common':
+        return 'bg-gray-500/20 text-gray-700 border-gray-500/30';
+      case 'rare':
+        return 'bg-blue-500/20 text-blue-700 border-blue-500/30';
+      case 'epic':
+        return 'bg-purple-500/20 text-purple-700 border-purple-500/30';
+      case 'legendary':
+        return 'bg-yellow-500/20 text-yellow-700 border-yellow-500/30';
+      default:
+        return 'bg-gray-500/20 text-gray-700 border-gray-500/30';
     }
   };
 
-  const filterByCategory = (category: ShopCategory) => {
-    return displayShopItems.filter((item) => item.category === category);
+  const getCategoryIcon = (category: string) => {
+    switch (category) {
+      case 'potions':
+        return <Heart className="w-4 h-4" />;
+      case 'equipment':
+        return <Shield className="w-4 h-4" />;
+      case 'consumables':
+        return <Zap className="w-4 h-4" />;
+      default:
+        return <Sparkles className="w-4 h-4" />;
+    }
+  };
+
+  const getCategoryName = (category: string) => {
+    switch (category) {
+      case 'potions':
+        return 'Poções';
+      case 'equipment':
+        return 'Equipamentos';
+      case 'consumables':
+        return 'Consumíveis';
+      default:
+        return 'Todos';
+    }
+  };
+
+  const filteredItems = selectedCategory === 'all' 
+    ? shopItems 
+    : shopItems.filter(item => item.category === selectedCategory);
+
+  const canAfford = (item: ShopItem) => {
+    return userCurrencies.galleons >= item.price;
+  };
+
+  const handlePurchase = (item: ShopItem) => {
+    if (canAfford(item)) {
+      console.log(`Comprando ${item.name} por ${item.price} Pokédólares`);
+      // Aqui você implementaria a lógica real de compra
+    }
   };
 
   return (
     <div className='min-h-screen bg-gradient-to-br from-background via-card to-background'>
       <Header
         title='Loja Pokédex'
-        subtitle='Loja Pokémon - Itens para Treinadores'
+        subtitle='Itens para Treinadores'
         icon={ShoppingBag}
         showBackButton={true}
         backButtonHref='/great-hall'
-        showCurrency='all'
+        showCurrency='galleons'
         user={user}
         classInfo={classInfo}
         onLogout={logout}
       />
 
-      <div className='container mx-auto px-4 py-4 md:py-8'>
-        <Tabs defaultValue='all' className='space-y-4 md:space-y-6'>
-          <TabsList className='grid w-full grid-cols-3 sm:grid-cols-6 bg-card h-auto'>
-            <TabsTrigger value='all' className='text-xs sm:text-sm py-2'>
-              <span className='hidden sm:inline'>Todos</span>
-              <span className='sm:hidden'>All</span>
+      <div className='container mx-auto px-4 py-8'>
+        {/* Currency Display */}
+        <Card className="mb-6 bg-gradient-to-r from-yellow-500/10 to-amber-500/10 border-yellow-500/20">
+          <CardContent className="p-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Coins className="w-6 h-6 text-yellow-600" />
+                <span className="text-sm text-muted-foreground">Seus Pokédólares:</span>
+              </div>
+              <span className="text-2xl font-bold text-yellow-600">{userCurrencies.galleons}</span>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Category Tabs */}
+        <Tabs defaultValue='all' onValueChange={(value) => setSelectedCategory(value as any)} className='space-y-6'>
+          <TabsList className='grid w-full grid-cols-4 bg-card'>
+            <TabsTrigger value='all'>
+              <Sparkles className="w-4 h-4 mr-2" />
+              Todos
             </TabsTrigger>
-            {shopCategories.map((category) => {
-              const iconMap: Record<ShopCategory, string> = {
-                pokeballs: '🔴',
-                potions: '🎯',
-                items: '🎟',
-                accessories: '💍',
-                evolution: '⭐',
-              };
-              const nameMap: Record<ShopCategory, string> = {
-                pokeballs: 'Pokébolas',
-                potions: 'Combates',
-                items: 'Itens',
-                accessories: 'Acessórios',
-                evolution: 'Evolução',
-              };
-              const isHiddenMobile = !['pokeballs', 'items'].includes(category);
-              return (
-                <TabsTrigger
-                  key={category}
-                  value={category}
-                  className={`text-xs sm:text-sm py-2 ${isHiddenMobile ? 'hidden sm:flex' : ''}`}
-                >
-                  <span className='hidden sm:inline'>{nameMap[category]}</span>
-                  <span className='sm:hidden'>{iconMap[category]}</span>
-                </TabsTrigger>
-              );
-            })}
+            <TabsTrigger value='potions'>
+              <Heart className="w-4 h-4 mr-2" />
+              Poções
+            </TabsTrigger>
+            <TabsTrigger value='equipment'>
+              <Shield className="w-4 h-4 mr-2" />
+              Equipamentos
+            </TabsTrigger>
+            <TabsTrigger value='consumables'>
+              <Zap className="w-4 h-4 mr-2" />
+              Consumíveis
+            </TabsTrigger>
           </TabsList>
 
-          <TabsContent value='all' className='space-y-4 md:space-y-6'>
-            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6'>
-              {displayShopItems.map((item) => (
+          <TabsContent value={selectedCategory} className='space-y-6'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+              {filteredItems.map((item) => (
                 <Card
                   key={item.id}
-                  className={`relative overflow-hidden hover:shadow-lg transition-all flex flex-col h-full min-h-[380px] sm:min-h-[420px] ${
-                    item.owned ? 'opacity-75' : ''
-                  }`}
+                  className='hover:shadow-xl transition-all duration-300 hover:scale-[1.02] cursor-pointer group'
                 >
-                  <div
-                    className={`absolute top-0 right-0 w-0 h-0 border-l-[30px] sm:border-l-[40px] border-l-transparent border-t-[30px] sm:border-t-[40px] ${getShopRarityColor(item.rarity)}`}
-                  />
-                  <CardHeader className='pb-3 flex-shrink-0'>
-                    <div className='flex items-center justify-between'>
-                      <div className='text-3xl sm:text-4xl'>{item.icon}</div>
-                      {item.owned && (
-                        <Badge className='bg-green-500 text-xs text-white'>
-                          <Eye className='w-3 h-3 mr-1' />
-                          <span className='hidden sm:inline'>Possuído</span>
-                          <span className='sm:hidden'>✓</span>
-                        </Badge>
-                      )}
-                    </div>
-                    <CardTitle className='text-base sm:text-lg line-clamp-2 min-h-[2.5rem] sm:min-h-[3.5rem]'>
-                      {item.name}
-                    </CardTitle>
-                    <CardDescription className='text-xs sm:text-sm line-clamp-3 min-h-[3rem] sm:min-h-[4rem]'>
-                      {item.description}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className='flex flex-col flex-grow space-y-3 sm:space-y-4'>
-                    <div className='space-y-2 flex-grow'>
-                      <Badge
-                        className={`${getShopRarityColor(item.rarity)} text-white`}
-                        variant='default'
-                      >
-                        <span className='text-xs'>
-                          {getShopRarityText(item.rarity)}
-                        </span>
-                      </Badge>
-                      <div className='space-y-1'>
-                        <h4 className='text-xs sm:text-sm font-semibold'>
-                          Efeitos:
-                        </h4>
-                        <div className='min-h-[2.5rem] sm:min-h-[3rem]'>
-                          {item.effects.map((effect, index) => (
-                            <div
-                              key={index}
-                              className='text-xs text-muted-foreground flex items-center gap-1 mb-1'
-                            >
-                              <Star className='w-3 h-3 flex-shrink-0' />
-                              <span className='line-clamp-1'>{effect}</span>
-                            </div>
-                          ))}
+                  <CardHeader>
+                    <div className="flex items-start justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="text-4xl">{item.icon}</div>
+                        <div>
+                          <CardTitle className="group-hover:text-primary transition-colors text-lg">
+                            {item.name}
+                          </CardTitle>
+                          <CardDescription className="mt-1 text-sm">
+                            {item.description}
+                          </CardDescription>
                         </div>
                       </div>
                     </div>
-
-                    <div className='flex items-center justify-between flex-shrink-0'>
-                      <div className='flex items-center gap-1 sm:gap-2'>
-                        <span className='text-lg sm:text-xl'>
-                          {getShopCurrencyIcon(item.currency)}
-                        </span>
-                        <span className='text-base sm:text-lg font-bold'>
-                          {item.price}
-                        </span>
-                        <span className='text-xs sm:text-sm text-muted-foreground'>
-                          {getShopCurrencyName(item.currency)}
-                        </span>
-                      </div>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="flex flex-wrap gap-2">
+                      <Badge variant="outline" className={getRarityColor(item.rarity)}>
+                        {item.rarity.charAt(0).toUpperCase() + item.rarity.slice(1)}
+                      </Badge>
+                      <Badge variant="outline" className="border-primary/30">
+                        {getCategoryIcon(item.category)}
+                        <span className="ml-1">{getCategoryName(item.category)}</span>
+                      </Badge>
                     </div>
 
-                    <div className='mt-auto pt-3 sm:pt-4 flex-shrink-0'>
+                    <div className="p-3 bg-muted/50 rounded-lg">
+                      <p className="text-sm font-semibold text-primary">{item.effect}</p>
+                    </div>
+
+                    <div className="flex items-center justify-between pt-4 border-t">
+                      <div className="flex items-center gap-2">
+                        <Coins className="w-5 h-5 text-yellow-600" />
+                        <span className="text-xl font-bold">{item.price}</span>
+                      </div>
                       <Button
                         onClick={() => handlePurchase(item)}
-                        disabled={!canAfford(item) || item.owned}
-                        className='w-full h-9 sm:h-10 text-xs sm:text-sm transition-all duration-300 hover:scale-105'
-                        variant={
-                          item.owned
-                            ? 'secondary'
-                            : canAfford(item)
-                              ? 'default'
-                              : 'outline'
-                        }
+                        disabled={!canAfford(item)}
+                        className="group-hover:shadow-lg transition-all"
+                        variant={canAfford(item) ? 'default' : 'outline'}
                       >
-                        {item.owned ? (
+                        {canAfford(item) ? (
                           <>
-                            <Eye className='w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2' />
-                            <span className='hidden sm:inline'>Possuído</span>
-                            <span className='sm:hidden'>Possuído</span>
-                          </>
-                        ) : canAfford(item) ? (
-                          <>
-                            <Coins className='w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2' />
+                            <ShoppingBag className="w-4 h-4 mr-2" />
                             Comprar
                           </>
                         ) : (
-                          <span className='text-center'>
-                            <span className='hidden sm:inline'>
-                              Moedas Insuficientes
-                            </span>
-                            <span className='sm:hidden'>Sem Moedas</span>
-                          </span>
+                          'Pokédólares Insuficientes'
                         )}
                       </Button>
                     </div>
@@ -252,153 +350,30 @@ function ShopPageContent() {
               ))}
             </div>
           </TabsContent>
-
-          {shopCategories.map((category) => (
-            <TabsContent
-              key={category}
-              value={category}
-              className='space-y-4 md:space-y-6'
-            >
-              <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6'>
-                {filterByCategory(category).map((item) => (
-                  <Card
-                    key={item.id}
-                    className={`relative overflow-hidden hover:shadow-lg transition-all flex flex-col h-full min-h-[380px] sm:min-h-[420px] ${
-                      item.owned ? 'opacity-75' : ''
-                    }`}
-                  >
-                    <div
-                      className={`absolute top-0 right-0 w-0 h-0 border-l-[30px] sm:border-l-[40px] border-l-transparent border-t-[30px] sm:border-t-[40px] ${getShopRarityColor(item.rarity)}`}
-                    />
-                    <CardHeader className='pb-3 flex-shrink-0'>
-                      <div className='flex items-center justify-between'>
-                        <div className='text-3xl sm:text-4xl'>{item.icon}</div>
-                        {item.owned && (
-                          <Badge className='bg-green-500 text-xs text-white'>
-                            <Eye className='w-3 h-3 mr-1' />
-                            <span className='hidden sm:inline'>Possuído</span>
-                            <span className='sm:hidden'>✓</span>
-                          </Badge>
-                        )}
-                      </div>
-                      <CardTitle className='text-base sm:text-lg line-clamp-2 min-h-[2.5rem] sm:min-h-[3.5rem]'>
-                        {item.name}
-                      </CardTitle>
-                      <CardDescription className='text-xs sm:text-sm line-clamp-3 min-h-[3rem] sm:min-h-[4rem]'>
-                        {item.description}
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent className='flex flex-col flex-grow space-y-3 sm:space-y-4'>
-                      <div className='space-y-2 flex-grow'>
-                        <Badge
-                          className={`${getShopRarityColor(item.rarity)} text-white`}
-                          variant='default'
-                        >
-                          <span className='text-xs'>
-                            {getShopRarityText(item.rarity)}
-                          </span>
-                        </Badge>
-                        <div className='space-y-1'>
-                          <h4 className='text-xs sm:text-sm font-semibold'>
-                            Efeitos:
-                          </h4>
-                          <div className='min-h-[2.5rem] sm:min-h-[3rem]'>
-                            {item.effects.map((effect, index) => (
-                              <div
-                                key={index}
-                                className='text-xs text-muted-foreground flex items-center gap-1 mb-1'
-                              >
-                                <Star className='w-3 h-3 flex-shrink-0' />
-                                <span className='line-clamp-1'>{effect}</span>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className='flex items-center justify-between flex-shrink-0'>
-                        <div className='flex items-center gap-1 sm:gap-2'>
-                          <span className='text-lg sm:text-xl'>
-                            {getShopCurrencyIcon(item.currency)}
-                          </span>
-                          <span className='text-base sm:text-lg font-bold'>
-                            {item.price}
-                          </span>
-                          <span className='text-xs sm:text-sm text-muted-foreground'>
-                            {getShopCurrencyName(item.currency)}
-                          </span>
-                        </div>
-                      </div>
-
-                      <div className='mt-auto pt-3 sm:pt-4 flex-shrink-0'>
-                        <Button
-                          onClick={() => handlePurchase(item)}
-                          disabled={!canAfford(item) || item.owned}
-                          className='w-full h-9 sm:h-10 text-xs sm:text-sm transition-all duration-300 hover:scale-105'
-                          variant={
-                            item.owned
-                              ? 'secondary'
-                              : canAfford(item)
-                                ? 'default'
-                                : 'outline'
-                          }
-                        >
-                          {item.owned ? (
-                            <>
-                              <Eye className='w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2' />
-                              <span className='hidden sm:inline'>Possuído</span>
-                              <span className='sm:hidden'>Possuído</span>
-                            </>
-                          ) : canAfford(item) ? (
-                            <>
-                              <Coins className='w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2' />
-                              Comprar
-                            </>
-                          ) : (
-                            <span className='text-center'>
-                              <span className='hidden sm:inline'>
-                                Moedas Insuficientes
-                              </span>
-                              <span className='sm:hidden'>Sem Moedas</span>
-                            </span>
-                          )}
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </TabsContent>
-          ))}
         </Tabs>
 
-        <Card className='mt-8 magical-border card-hover border-accent/20 bg-card/60 backdrop-blur-sm'>
-          <CardHeader>
-            <CardTitle className='flex items-center gap-2'>
-              <Coins className='w-6 h-6 text-accent' />
-              Câmbio de Gringotes
-            </CardTitle>
-            <CardDescription>
-              Troque suas moedas por outras denominações (informativo)
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className='grid grid-cols-1 md:grid-cols-3 gap-4 text-center'>
-              <div className='p-4 rounded-lg bg-muted/30'>
-                <div className='text-2xl mb-2'>🥇</div>
-                <div className='font-semibold'>1 Galeão</div>
-                <div className='text-sm text-muted-foreground'>= 17 Bagas</div>
+        {/* Info Card */}
+        <Card className="mt-8 border-primary/20 bg-gradient-to-r from-primary/5 to-accent/5">
+          <CardContent className="p-6">
+            <div className="flex items-start gap-4">
+              <div className="p-3 rounded-full bg-primary/10">
+                <ShoppingBag className="w-6 h-6 text-primary" />
               </div>
-              <div className='p-4 rounded-lg bg-muted/30'>
-                <div className='text-2xl mb-2'>🥈</div>
-                <div className='font-semibold'>1 Sicle</div>
-                <div className='text-sm text-muted-foreground'>= 29 Pokébolas</div>
-              </div>
-              <div className='p-4 rounded-lg bg-muted/30'>
-                <div className='text-2xl mb-2'>💰</div>
-                <div className='font-semibold'>Como Ganhar</div>
-                <div className='text-sm text-muted-foreground'>
-                  Quizzes, Missões, Desafios
+              <div className="flex-1">
+                <h3 className="text-lg font-semibold mb-2">Como Usar os Itens</h3>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-muted-foreground">
+                  <div>
+                    <p className="font-medium text-foreground mb-1">🧪 Poções</p>
+                    <p>Use durante batalhas para recuperar HP e remover status negativos</p>
+                  </div>
+                  <div>
+                    <p className="font-medium text-foreground mb-1">🛡️ Equipamentos</p>
+                    <p>Equipe para aumentar seus atributos permanentemente</p>
+                  </div>
+                  <div>
+                    <p className="font-medium text-foreground mb-1">⚡ Consumíveis</p>
+                    <p>Ative para ganhar bônus temporários em suas atividades</p>
+                  </div>
                 </div>
               </div>
             </div>

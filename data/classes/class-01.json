@@ -19,7 +19,13 @@
             "gems": 0
           }
         },
-        "completedQuizzes": {},
+        "completedQuizzes": {
+          "quiz-js-fundamentals": {
+            "attempts": 1,
+            "bestScore": 0,
+            "completedAt": "2026-01-18T18:52:18.450Z"
+          }
+        },
         "missionProgress": {},
         "unlockedAchievements": [],
         "inventory": []
@@ -90,36 +96,126 @@
     ],
     "quizzes": [
       {
-        "id": "quiz-js-fundamentals",
-        "title": "Fundamentos de JavaScript",
-        "description": "Teste suas habilidades básicas de JS: variáveis, funções e loops.",
+        "id": "quiz-python-fundamentals",
+        "title": "Fundamentos de Python",
+        "description": "Teste seus conhecimentos básicos em Python: variáveis, tipos de dados e operadores.",
         "difficulty": "beginner",
-        "xpReward": 50,
-        "galleonReward": 25,
+        "xpReward": 100,
+        "galleonReward": 50,
         "unlocksAchievementId": "ach-002",
         "questions": [
           {
             "id": "q1",
-            "question": "Qual a diferença entre `let` e `const`?",
+            "question": "Qual é o resultado de: print(type(5))?",
             "options": [
-              "Nenhuma",
-              "let é de bloco, const não",
-              "const não pode ser reatribuída"
+              "<class 'int'>",
+              "<class 'float'>",
+              "<class 'str'>",
+              "<class 'number'>"
+            ],
+            "correctAnswer": 0
+          },
+          {
+            "id": "q2",
+            "question": "Como você define uma variável em Python?",
+            "options": [
+              "var nome = 'Python'",
+              "let nome = 'Python'",
+              "nome = 'Python'",
+              "String nome = 'Python'"
             ],
             "correctAnswer": 2
           },
           {
-            "id": "q2",
-            "question": "Qual a diferença entre `let` e `const`?",
+            "id": "q3",
+            "question": "Qual operador é usado para exponenciação em Python?",
             "options": [
-              "Nenhuma",
-              "let é de bloco, const não",
-              "const não pode ser reatribuída"
+              "^",
+              "**",
+              "exp()",
+              "pow"
+            ],
+            "correctAnswer": 1
+          },
+          {
+            "id": "q4",
+            "question": "O que o comando 'input()' faz em Python?",
+            "options": [
+              "Imprime na tela",
+              "Lê dados do usuário",
+              "Define uma variável",
+              "Cria uma função"
+            ],
+            "correctAnswer": 1
+          },
+          {
+            "id": "q5",
+            "question": "Qual é o operador de comparação para igualdade em Python?",
+            "options": [
+              "=",
+              "==",
+              "===",
+              "equals()"
+            ],
+            "correctAnswer": 1
+          },
+          {
+            "id": "q6",
+            "question": "Como você cria um comentário de uma linha em Python?",
+            "options": [
+              "// comentário",
+              "/* comentário */",
+              "# comentário",
+              "-- comentário"
             ],
             "correctAnswer": 2
+          },
+          {
+            "id": "q7",
+            "question": "Qual método converte uma string para minúsculas?",
+            "options": [
+              "toLowerCase()",
+              "lower()",
+              "toLower()",
+              "lowercase()"
+            ],
+            "correctAnswer": 1
+          },
+          {
+            "id": "q8",
+            "question": "Como você verifica o comprimento de uma lista em Python?",
+            "options": [
+              "length(lista)",
+              "lista.length",
+              "len(lista)",
+              "size(lista)"
+            ],
+            "correctAnswer": 2
+          },
+          {
+            "id": "q9",
+            "question": "Qual palavra-chave é usada para definir uma função em Python?",
+            "options": [
+              "function",
+              "func",
+              "def",
+              "define"
+            ],
+            "correctAnswer": 2
+          },
+          {
+            "id": "q10",
+            "question": "O que 'True and False' retorna em Python?",
+            "options": [
+              "True",
+              "False",
+              "None",
+              "Error"
+            ],
+            "correctAnswer": 1
           }
         ],
-        "timeLimit": 10000
+        "timeLimit": 600000
       },
       {
         "id": "quiz-react-hooks",

@@ -6,8 +6,8 @@ import { useRegistrationStore } from '@/lib/client/store/registration-store';
 import { housesData } from '@/lib/core/domain/house';
 import { sortingQuestions } from '@/lib/core/domain/sorting-hat';
 import { useSortingHat } from '@/lib/client/hooks/sorting-hat/use-sorting-hat';
-import SortingHatQuestionScreen from '@/lib/client/components/sorting-hat/sorting-hat-question-screen';
-import SortingHatResultScreen from '@/lib/client/components/sorting-hat/sorting-hat-result-screen';
+import SortingHatQuestionScreen from '@/lib/client/components/inicial/sorting-inicial-quiz';
+import SortingHatResultScreen from '@/lib/client/components/inicial/sorting-inicial-result-screen';
 
 export default function SortingHatPage() {
   const router = useRouter();

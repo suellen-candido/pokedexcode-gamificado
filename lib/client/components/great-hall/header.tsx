@@ -84,12 +84,10 @@ export function Header({
   const houseColorClass = userHouse?.house?.tailwindGradient || 'bg-gray-500';
 
   const userCurrencies = useMemo(() => {
-    if (!classInfo || !user) return { galleons: 0, sickles: 0, knuts: 0 };
+    if (!classInfo || !user) return { galleons: 0 };
     const progress = classInfo.users?.[user.id]?.progress;
     return {
       galleons: progress?.currencies.galleons ?? 0,
-      sickles: progress?.currencies.sickles ?? 0,
-      knuts: progress?.currencies.knuts ?? 0,
     };
   }, [classInfo, user]);
 
@@ -99,7 +97,8 @@ export function Header({
     return {
       level: progress?.level ?? 1,
       xp: progress?.xp ?? 0,
-      xpToNextLevel: progress?.xpToNextLevel ?? 100,
+      // xpToNextLevel isn't present in the type; use a safe default
+      xpToNextLevel: 100,
     };
   }, [classInfo, user]);
 
@@ -164,16 +163,25 @@ export function Header({
               <Button
                 variant='ghost'
                 className='text-blue-600 font-semibold text-xs md:text-base px-2 md:px-4 !bg-transparent hover:!bg-transparent hover:text-[#FFCB05] relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#FFCB05] hover:after:w-full after:transition-all after:duration-300'
-                onClick={() => router.push('/professor')}
+                onClick={() => router.push('/quizzes')}
               >
                 Aprender
               </Button>
+              {(user.email.endsWith('@ufc.br') || user.email === 'suulpessoal@gmail.com') && (
+                <Button
+                  variant='ghost'
+                  className='text-blue-600 font-semibold text-xs md:text-base px-2 md:px-4 !bg-transparent hover:!bg-transparent hover:text-[#FFCB05] relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#FFCB05] hover:after:w-full after:transition-all after:duration-300'
+                  onClick={() => router.push('/professor')}
+                >
+                  Professor
+                </Button>
+              )}
               <Button
                 variant='ghost'
                 className='text-blue-600 font-semibold text-xs md:text-base px-2 md:px-4 !bg-transparent hover:!bg-transparent hover:text-[#FFCB05] relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#FFCB05] hover:after:w-full after:transition-all after:duration-300'
                 onClick={() => router.push('/shop')}
               >
-                Amigos
+                Loja
               </Button>
             </nav>
           </div>
