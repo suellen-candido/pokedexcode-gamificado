@@ -1,5 +1,5 @@
 {
-  "gryffindor": {
+  "treinador-fogo": {
     "name": "Treinador de Fogo",
     "icon": "🔥",
     "founder": "Charmander",
@@ -8,7 +8,7 @@
       "secondary": "#FCA5A5"
     }
   },
-  "slytherin": {
+  "treinador-agua": {
     "name": "Treinador de Água",
     "icon": "💧",
     "founder": "Squirtle",
@@ -17,22 +17,13 @@
       "secondary": "#93C5FD"
     }
   },
-  "ravenclaw": {
+  "treinador-planta": {
     "name": "Treinador de Planta",
     "icon": "🌱",
     "founder": "Bulbasaur",
     "colors": {
       "primary": "#16A34A",
       "secondary": "#86EFAC"
-    }
-  },
-  "hufflepuff": {
-    "name": "Treinador de Elétrico",
-    "icon": "⚡",
-    "founder": "Pikachu",
-    "colors": {
-      "primary": "#EAB308",
-      "secondary": "#FDE047"
     }
   }
 }

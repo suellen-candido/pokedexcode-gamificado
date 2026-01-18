@@ -88,12 +88,9 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  --color-gryffindor: var(--gryffindor);
-  --color-gryffindor-secondary: var(--gryffindor-secondary);
-  --color-slytherin: var(--slytherin);
-  --color-slytherin-secondary: var(--slytherin-secondary);
-  --color-ravenclaw: var(--ravenclaw);
-  --color-ravenclaw-secondary: var(--ravenclaw-secondary);
+  --color-tipofogo: var(--tipofogo);
+  --color-tipoagua: var(--tipoagua);
+  --color-tipoplanta: var(--tipoplanta);
   --color-hufflepuff: var(--hufflepuff);
   --color-hufflepuff-secondary: var(--hufflepuff-secondary);
 }
@@ -243,32 +240,28 @@
   animation: shimmer 2s infinite;
 }
 
-.house-gryffindor {
-  background: linear-gradient(135deg, var(--gryffindor), var(--gryffindor-secondary));
+.house-fogo {
+  background: linear-gradient(135deg, var(--tipofogo), var(--tipofogo-secondary));
 }
 
-.house-slytherin {
-  background: linear-gradient(135deg, var(--slytherin), var(--slytherin-secondary));
+.house-agua {
+  background: linear-gradient(135deg, var(--tipoagua), var(--tipoagua-secondary));
 }
 
-.house-ravenclaw {
-  background: linear-gradient(135deg, var(--ravenclaw), var(--ravenclaw-secondary));
-}
-
-.house-hufflepuff {
-  background: linear-gradient(135deg, var(--hufflepuff), var(--hufflepuff-secondary));
+.house-planta {
+  background: linear-gradient(135deg, var(--tipoplanta), var(--tipoplanta-secondary));
 }
 
 .magical-border {
   background:
     linear-gradient(var(--background), var(--background)) padding-box,
-    linear-gradient(45deg, var(--gryffindor), var(--gryffindor-secondary), var(--ravenclaw), var(--slytherin)) border-box;
+    linear-gradient(45deg, var(--tipofogo), var(--tipoagua), var(--tipoplanta)) border-box;
   border: 2px solid transparent;
 }
 
 .text-magical {
   -webkit-text-fill-color: transparent;
-  background: linear-gradient(45deg, var(--gryffindor), var(--gryffindor-secondary), var(--ravenclaw), var(--slytherin));
+  background: linear-gradient(45deg, var(--tipofogo), var(--tipoagua), var(--tipoplanta));
   -webkit-background-clip: text;
   background-clip: text;
 }

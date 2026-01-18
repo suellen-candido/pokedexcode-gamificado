@@ -1,4 +1,4 @@
-export type HouseId = 'gryffindor' | 'hufflepuff' | 'ravenclaw' | 'slytherin';
+export type HouseId = 'fogo' | 'planta' | 'agua';
 
 export interface House {
   id: HouseId;
@@ -17,7 +17,7 @@ export interface House {
 }
 
 export const housesData: Record<HouseId, Omit<House, 'id'>> = {
-  gryffindor: {
+  fogo: {
     name: 'Treinador de Fogo',
     icon: '🔥',
     founder: 'Charmander',
@@ -31,21 +31,7 @@ export const housesData: Record<HouseId, Omit<House, 'id'>> = {
     colors: ['#FF6B35', '#FFA500'],
     tailwindGradient: 'from-orange-500 to-red-600',
   },
-  hufflepuff: {
-    name: 'Treinador de Elétrico',
-    icon: '⚡',
-    founder: 'Pikachu',
-    mascot: 'Pikachu',
-    head: 'Mestre Surge',
-    ghost: 'Espírito do Raio Iluminado',
-    commonRoom: 'Laboratório Elétrico',
-    description: 'Time dos treinadores leais, energéticos e confiáveis. Especialistas em automação e infraestrutura.',
-    specialty: 'DevOps & Infraestrutura',
-    traits: ['Lealdade', 'Energia', 'Trabalho duro', 'Confiabilidade'],
-    colors: ['#FFEB3B', '#FBC02D'],
-    tailwindGradient: 'from-yellow-400 to-yellow-600',
-  },
-  ravenclaw: {
+  planta: {
     name: 'Treinador de Planta',
     icon: '🌱',
     founder: 'Bulbasaur',
@@ -59,7 +45,8 @@ export const housesData: Record<HouseId, Omit<House, 'id'>> = {
     colors: ['#4CAF50', '#66BB6A'],
     tailwindGradient: 'from-green-500 to-green-700',
   },
-  slytherin: {
+
+  agua: {
     name: 'Treinador de Água',
     icon: '💧',
     founder: 'Squirtle',

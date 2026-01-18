@@ -22,26 +22,22 @@ interface StudentCardProps {
 
 export function StudentCard({ student, onClick }: StudentCardProps) {
   const houses = {
-    gryffindor: {
+    fogo: {
       name: 'Treinador de Fogo',
       colors: 'from-orange-600 to-red-500',
       icon: '🔥',
     },
-    slytherin: {
+    agua: {
       name: 'Treinador de Água',
       colors: 'from-blue-600 to-cyan-500',
       icon: '💧',
     },
-    ravenclaw: {
+    planta: {
       name: 'Treinador de Planta',
       colors: 'from-green-600 to-lime-500',
       icon: '🌱',
     },
-    hufflepuff: {
-      name: 'Treinador de Elétrico',
-      colors: 'from-yellow-500 to-amber-500',
-      icon: '⚡',
-    },
+
   };
 
   const currentHouse = houses[student.house as keyof typeof houses];

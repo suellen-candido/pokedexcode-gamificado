@@ -1,10 +1,9 @@
 import { z } from "zod/v4";
 
 export const HouseIdSchema = z.enum([
-  'gryffindor',
-  'hufflepuff',
-  'ravenclaw',
-  'slytherin',
+  'fogo',
+  'agua',
+  'planta',
 ]);
 
 export type HouseStats = {

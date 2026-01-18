@@ -24,7 +24,7 @@ export function HouseSelector({
 }: HouseSelectorProps) {
   const houses: House[] = [
     {
-      id: 'gryffindor',
+      id: 'fogo',
       name: 'Treinador de Fogo',
       description: 'Time dos corajosos especialistas em IA & Machine Learning',
       specialty: 'IA & Machine Learning',
@@ -35,7 +35,7 @@ export function HouseSelector({
         'Como Charmander, o fogo da inovação impulsiona a inteligência artificial!',
     },
     {
-      id: 'slytherin',
+      id: 'agua',
       name: 'Treinador de Água',
       description: 'Time dos estratégicos especialistas em Segurança & Dados',
       specialty: 'Segurança & Proteção de Dados',
@@ -46,7 +46,7 @@ export function HouseSelector({
         'Como Squirtle, protegemos os dados com uma defesa impenetrável!',
     },
     {
-      id: 'ravenclaw',
+      id: 'planta',
       name: 'Treinador de Planta',
       description: 'Time dos inteligentes especialistas em Web Development',
       specialty: 'Web Development & Full Stack',
@@ -55,16 +55,6 @@ export function HouseSelector({
       icon: '🌱',
       quote:
         'Como Bulbasaur, crescemos e nos adaptamos ao desenvolvimento web moderno!',
-    },
-    {
-      id: 'hufflepuff',
-      name: 'Treinador de Elétrico',
-      description: 'Time dos confiáveis especialistas em DevOps & Infraestrutura',
-      specialty: 'DevOps & Infraestrutura',
-      colors: 'from-yellow-500 to-amber-500',
-      traits: ['Leal', 'Energético', 'Confiável'],
-      icon: '⚡',
-      quote: 'Como Pikachu, mantemos toda a infraestrutura funcionando com energia!',
     },
   ];
 

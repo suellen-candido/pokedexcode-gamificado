@@ -88,7 +88,7 @@ export default function ShowdownPage() {
         autoPlay={false}
       />
       
-      {/* Header */}}
+      {/* Header */}
       <div className="w-full relative h-20">
         <Image 
           src="/images/header-background.png"
