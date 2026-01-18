@@ -1,8 +1,8 @@
 [
   {
     "id": "class-01",
-    "name": "Frontend Avançado 2025",
-    "description": "Uma jornada profunda em React, Next.js e estratégias avançadas de desenvolvimento web.",
+    "name": "Primeiro Semestre",
+    "description": "Fundamentos de programação em Python - Aprenda os conceitos básicos e comece sua jornada como programador.",
     "professorId": "user-snape",
     "isPrivate": false,
     "password": null,
