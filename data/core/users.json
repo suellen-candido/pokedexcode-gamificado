@@ -1,0 +1,28 @@
+[
+  {
+    "id": "c205ef2e-062c-471d-aaa0-b2e9dec51fea",
+    "email": "suulpessoal@gmail.com",
+    "role": "student",
+    "house": "gryffindor",
+    "profile": {
+      "avatar": "https://i.pinimg.com/originals/a0/64/bb/a064bb61c112493c31ac052d21220b70.jpg",
+      "name": "Suellen Cândido"
+    },
+    "activity": {
+      "createdAt": "2026-01-18T14:34:32.619Z",
+      "isActive": false,
+      "lastSeen": "2026-01-18T14:34:32.619Z"
+    },
+    "preferences": {
+      "language": "pt-BR",
+      "notifications": true,
+      "theme": "dark"
+    },
+    "enrollments": [
+      "class-01"
+    ],
+    "auth": {
+      "password": "$2b$10$1W3mWNIEiy1GmI9GXYbp.Oo0WFRU7UvOZT7KEZ8RWpPGU0IT3SFtC"
+    }
+  }
+]
